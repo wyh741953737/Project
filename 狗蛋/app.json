@@ -1,0 +1,41 @@
+{
+  "pages": [
+    "pages/welcome/welcome",
+    "pages/news/news",
+    
+    "pages/videos/video_detail/video_detail",
+    "pages/music/music",
+    "pages/videos/videos",
+    "pages/review/review"
+  ],
+  "tabBar": {
+    "borderStyle": "black",
+    "position": "bottom",
+    "list": [
+      {
+        "pagePath": "pages/music/music",
+        "text": "电影",
+        "iconPath": "pages/images/movies.png",
+        "selectedIconPath": "pages/images/movie.png"
+      },
+      {
+        "pagePath": "pages/videos/videos",
+        "text": "视频",
+        "iconPath": "pages/images/audio.png",
+        "selectedIconPath": "pages/images/audioed.png"
+      },
+      {
+        "pagePath": "pages/news/news",
+        "text": "新闻",
+        "iconPath": "pages/images/news.png",
+        "selectedIconPath": "pages/images/newsed.png"
+      }
+    ]
+  },
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#2DC799",
+    "navigationBarTitleText": "狗蛋TV",
+    "navigationBarTextStyle": "white"
+  }
+}

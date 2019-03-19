@@ -1,0 +1,59 @@
+.articlelist{
+display: flex;
+flex-direction: column;
+margin-top: 20rpx;
+margin-bottom: 40rpx;
+background-color: #fff;
+border-top: 1px solid #ededed;
+padding: 10px;
+padding-bottom: 5px;
+}
+.author-time{
+margin-top: 10rpx;
+margin-bottom: 20rpx;
+}
+.author-icon{
+width: 60rpx;
+height: 60rpx;
+vertical-align: middle;
+}
+.author{
+margin-left: 20rpx;
+
+}
+.title{
+font-size: 34rpx;
+font-weight: 700;
+margin-bottom: 10px;
+}
+.articleimg{
+margin-left: 16px;
+width: 100%;
+right: 340rpx;
+margin: auto 0;
+margin-bottom: 15px;
+}
+.articletext{
+color: #666;
+font-size: 26rpx;
+margin-bottom: 20rpx;
+letter-spacing: 2rpx;
+line-height: 16px;
+text-indent: 1em;
+
+}
+.article-like{
+font-size: 13px;
+flex-direction: row;
+line-height: 16px;
+}
+.article-like-text{
+vertical-align: middle;
+margin-right: 20px;
+}
+.article-like-icon{
+height: 16px;
+width: 16px;
+margin-right: 8px;
+vertical-align: middle;
+}
