@@ -4,9 +4,17 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
     "koa": "^2.7.0",
+    "koa-convert": "^1.2.0",
     "koa-logger": "^3.2.0",
-    "koa-router": "^7.4.0"
+    "koa-router": "^7.4.0",
+    "koa-session": "^5.10.1",
+    "koa-static": "^5.0.0",
+    "koa-views": "^6.1.5",
+    "pug": "^2.0.3",
+    "puppeteer": "^1.13.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -15,8 +23,9 @@
     "node-fetch": "^2.3.0"
   },
   "scripts": {
+    "start": "node ./server/",
     "dev": "nodemon -w src --exec \"babel-node src --presets env\"",
-    "build": "babel src  -s -D -d dist --presets env",
+    "build": "parcel build parcel/index.html --no-catche -d parcel/dist --public-url /dist/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
