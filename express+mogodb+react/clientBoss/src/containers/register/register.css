@@ -1,0 +1,15 @@
+
+.nav-container{
+    height: 1.4rem;
+    width: 10rem;
+    text-align: center;
+    line-height: 1.4rem;
+    color: white;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: .12rem;
+    background-color: rgba(16, 176, 182, 0.815);
+}
+.logo-wrap{
+    margin-top: 2.1rem;
+}

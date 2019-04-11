@@ -1,0 +1,44 @@
+{
+  "name": "nodereact",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "antd-mobile": "^2.2.11",
+    "antd-mobile-demo-data": "^0.2.0",
+    "axios": "^0.18.0",
+    "babel-plugin-import": "^1.11.0",
+    "js-cookie": "^2.2.0",
+    "keypad-easy": "^1.0.3",
+    "prop-types": "^15.7.2",
+    "rc-form": "^2.4.4",
+    "react": "^16.8.6",
+    "react-app-rewired": "^2.1.1",
+    "react-dom": "^16.8.6",
+    "react-scripts": "2.1.8",
+    "redux-devtools-extension": "^2.13.8",
+    "socket.io": "^2.2.0"
+  },
+  "scripts": {
+    "start": "set PORT=3005 && react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "proxy": "http://localhost:3001",
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "antd": "^3.15.2",
+    "react-redux": "^6.0.1",
+    "react-router-dom": "^5.0.0",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0"
+  }
+}

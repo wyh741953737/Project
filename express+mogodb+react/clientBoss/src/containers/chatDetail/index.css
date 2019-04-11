@@ -1,0 +1,104 @@
+*{margin:0px;padding:0px;}
+   .personal{
+    width: 2.5rem;
+    margin-top: .25rem;
+    height:.5rem;
+    text-align: center;
+ 
+   }
+   .describe{
+       line-height: .4rem;
+       text-align: center;
+       margin-top: .2rem;
+       margin-bottom: .14rem;
+   }
+   .img-wrap{
+       max-width: 100%;
+       max-height: 100%;
+       border: 1px solid red;
+       
+   }
+   .am-tab-bar{ 
+    position: fixed;
+    bottom:0;
+    width: 10rem;
+    height:inherit;
+
+   }
+.chat-wrap{
+       max-width: 5rem;
+       width: auto;
+       vertical-align: center;
+       display: flex;
+       margin: .2rem 0 .45rem .3rem;
+       flex-wrap: wrap;
+   }
+.chat-header{
+       border: 1px solid red;
+       border-radius: .9rem;
+       height: .9rem;
+       width: .9rem;
+       background-size: 100%;
+   }
+.chat-circle{
+    margin-top: .2rem;
+    width: 0;
+    height: 0;
+    border: .12rem solid transparent;
+    border-right: .12rem solid rgb(238, 209, 214);
+   }
+.chat-message{
+    background: rgb(238, 209, 214);
+    color: white;
+    white-space: normal;
+    padding: .2rem;
+    line-height: .5rem;
+    letter-spacing: .08em;
+    border-radius: .1rem;
+    max-width: 2.67rem;
+   }
+.chat-to-wrap{
+    max-width: 5rem;
+    width: auto;
+    vertical-align: center;
+    display: flex;
+    margin: .2rem .3rem .45rem 0;
+    color: white;
+    margin-left: 5rem;
+    flex-wrap: wrap;
+    float: right;
+}
+
+.message-right{
+    flex: 1;
+    background-color: rgb(48, 227, 233);
+   }
+.circle-right{
+    margin-top: .2rem;
+    width: 0;
+    height: 0;
+    border: .12rem solid transparent;
+    border-left: .12rem solid rgb(48, 227, 233);
+   }
+.right-header{
+    float: right;
+   }
+   .click-button{
+    background:rgb(48, 227, 233);
+    color:#fff;
+    line-height: .45rem;
+    font-size: 16px;
+   }
+   .stick{
+    position: fixed;
+   z-index:100;
+     top: 0;
+   }
+   .chat-to-from-wrap{
+    margin-bottom: 44px;
+    margin-top: 3rem;
+}
+.imgs-wrap{
+    width: 1rem;
+    height: 1rem;
+}

@@ -1,0 +1,19 @@
+.error-msg{
+    color: red;
+    text-align: center;
+    font-size: 18px;
+}
+.am-tab-bar{
+    position: fixed;
+    bottom:0;
+    width: 10rem;
+    height:inherit;
+}
+.sticky-header{
+    position: fixed;
+    width: 10rem;
+    height:inherit;     
+    z-index:100;
+     top: 0;
+   }
+ 
