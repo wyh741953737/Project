@@ -1,0 +1,31 @@
+.city-wrap{
+    display: inline-block;
+    border-radius: .15rem;
+    background-color:rgb(228, 228, 228);
+    height: .58rem;
+    line-height: .58rem;
+    opacity: .6;
+    font-size: 12px;
+    margin:0 .19rem 0 0;
+}
+.user-info-text{
+    word-break: break-all;
+    line-height: .5rem;
+    font-size: 14px;
+    
+}
+.user-info{
+   margin: .1rem 0;
+   color: rgb(146, 145, 145);
+   display: -webkit-box;
+    overflow: hidden;
+    white-space: normal !important;
+    text-overflow: ellipsis;
+    word-wrap:break-word;
+    -webkit-line-clamp:1;
+    -webkit-box-orient: vertical
+}
+.header-extra-wrap{
+    color:#40cccc;
+    font-weight:bold;
+}

@@ -1,0 +1,15 @@
+.work-wrap{
+
+    margin-top: 1rem;
+}
+.select-wrap{
+    font-size: 14px;
+}
+.work-header{
+    height: .6rem;
+    line-height: .6rem;
+    border: 1px solid pink;
+}
+.work-child{
+    margin-top:.6rem;
+}

@@ -1,4 +1,6 @@
-
+.wrap{
+    background-color: #fff;
+}
 .nav-container{
     height: 1.4rem;
     width: 10rem;

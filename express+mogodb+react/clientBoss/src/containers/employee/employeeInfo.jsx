@@ -8,13 +8,13 @@ import {
   Button,
   List,
   Picker,
-
+  TextareaItem,
   Modal,
 } from 'antd-mobile'
 import HeaderIcon from '../../components/headerSelector/headerSelector'
 import { Redirect } from 'react-router-dom'
 import { updateUser } from '../../redux/actions'
-import City from '../../components/city/city'
+
 import CitySelector from '../../components/city/city'
 const staes = [
   {
@@ -94,7 +94,7 @@ const experience=[
   {
     label:
     (<div>
-      <span>应届生</span>
+      <span>无</span>
     </div>),
     value: '无工作经验',
   },
@@ -153,7 +153,7 @@ const degree=[
       
       <span>研究生</span>
     </div>),
-    value: '研究',
+    value: '研究生',
   },
   {
     label:
@@ -169,23 +169,7 @@ const degree=[
       <span>专科生</span>
     </div>),
     value: '专科',
-  },
-  {
-    label:
-    (<div>
-      
-      <span>高中生</span>
-    </div>),
-    value: '高中',
-  },
-  {
-    label:
-    (<div>
-      
-      <span>初中生</span>
-    </div>),
-    value: '初中',
-  },
+  }
 ]
 const Item=List.Item
 const Brief = Item.Brief;
@@ -199,7 +183,8 @@ class EmployeeInfo extends Component {
     salarysValue:'',
     experiences:'',
     degrees:'',
-    city:''
+    skills:'',
+    city:[]
   }
   handleChange =(name,val) =>{
     this.setState({
@@ -209,11 +194,12 @@ class EmployeeInfo extends Component {
   clickHeader= (header) => {
     this.setState({ header })
   }
-  clickCity= (e) => {
-      this.setState({   city:e.target.value  })
+  clickCity= (city) => {
+    console.log('jjj',city)
+      this.setState({   city  })
   }
   save=()=>{
-   console.log(this.state)
+   console.log(this.state,'this.state')
     if(!this.state.header || !this.state.post || !this.state.info || !this.state.stae || !this.state.salarysValue || !this.state.experiences || !this.state.degrees) 
     {      alert('信息不完整', '请填写完整信息', [
             { text: '好的', onPress: () => console.log('ok') },
@@ -236,10 +222,11 @@ class EmployeeInfo extends Component {
        <HeaderIcon clickHeader={ this.clickHeader} />
        <InputItem placeholder='请输你想应聘的岗位' onChange={val => this.handleChange('post',val)}>求职岗位:</InputItem>
        <InputItem placeholder='请输入个人介绍'  onChange={val => this.handleChange('info',val)}>个人介绍:</InputItem>
+       <TextareaItem title='我的技能:' placeholder='如React，Vue' rows={2} onChange={val => this.handleChange('skills',val)}/>
        <List >       
         <Item align="top"  multipleLine>
-          工作城市 
-          <CitySelector clickCity={val =>this.handleChange('city',val)}/><Brief></Brief>
+          期望工作的城市 
+          <CitySelector clickCity={this.clickCity}/><Brief></Brief>
         </Item>
         <Picker
           data={staes}
@@ -248,6 +235,7 @@ class EmployeeInfo extends Component {
           onChange={val => this.handleChange('stae',val)}
          
         >
+
           <List.Item arrow="horizontal">求职状态</List.Item>
         </Picker>
         <Picker

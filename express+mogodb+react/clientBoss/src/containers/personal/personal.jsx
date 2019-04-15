@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { Router,Switch,Route,Link} from 'react-router-dom'
+  import React, { Component } from 'react'
+// import { Router,Switch,Route,Link} from 'react-router-dom'
 import { connect } from 'react-redux'
 import { resetUser } from '../../redux/actions'
 import Cookies from 'js-cookie'
@@ -11,24 +11,22 @@ import TiSheng from '../personal-route/tisheng/tisheng'
 import TiWen from '../personal-route/tiwen/tiwem'
 import GuanZhu from '../personal-route/guanzhu/guanzhu'
 import YinSi from '../personal-route/yinsi/yinsi'
-import BangZhu from '../personal-route/bangzhu/bangzhu'
-import JingCha from '../personal-route/jingcha/jingcha'
-import PersonalList from '../../components/personalList/personalList'
-// import {jian}  from './jian.png'
+// import BangZhu from '../personal-route/bangzhu/bangzhu'
+// import JingCha from '../personal-route/jingcha/jingcha'
+// import PersonalList from '../../components/personalList/personalList'
 import './index.css'
-// import '../../assets/css/index.css'
 const Item=List.Item
 const Brief = Item.Brief;
  class Personal extends Component {
  state={
   bossLists:[
   {
-    path:'guanli',
+    path:'/guanli',
     component:GuanLi,
     title:'管理招聘要求',
     icon:'guanli',
   }, {
-    path:'yinsi',
+    path:'/yinsi',
     component:YinSi,
     title:'隐私设置',
     icon:'yinsi',
@@ -39,7 +37,7 @@ const Brief = Item.Brief;
        path:'/wei',
       component:Wei,
       title:'我的微简历',
-      icon:'../personal-route/wei/wei',
+      icon:'wei',
     },
     {
      path:'/fujian',
@@ -76,18 +74,23 @@ const Brief = Item.Brief;
     component:YinSi,
     title:'隐私设置',
     icon:'yinsi',
-  },
-  // {
-  //   path:'/bangzhu',
-  //   component:BangZhu,
-  //   title:'帮助与反馈',
-  //   icon:'bangzhu',
-  // },{
-  //   path:'/jingcha',
-  //   component:JingCha,
-  //   title:'首都网警',
-  //   icon:'jingcha',
-  // },
+  }
+  ],
+  navlist:[
+    {
+      number:0,
+      text:'沟通过'
+    }, {
+      number:0,
+      text:'面试'
+    }, {
+      number:0,
+      text:'已投递'
+    }, {
+      number:0,
+      text:'感兴趣'
+    },
+
   ]
 
  }
@@ -104,89 +107,66 @@ const Brief = Item.Brief;
      }
    ])
   }
-  render() {
-    const {username,header,type}=this.props.user
-    console.log(type)
-    const {bossLists, Lists} =this.state
-    const path=this.props.location.pathname
-    const currentNav=Lists.find(nav => nav.path===path)
+  render()
+   {
+     const {user}=this.props
+    // const {username,header,type,_id}=this.props.user
+    const {bossLists, Lists,navlist} =this.state
+   
     return (
       <div  style={{marginTop:'1.5rem',marginBottom:'1.21rem'}}>
-    <div>
-       <List  >
-        <Item  extra={<img src={require(`../../assets/images/${header}.png`)} style={{width:70,height:70}} />} multipleLine onClick={() => {}}>
-          {username}
-          <Brief  style={{fontSize:10}}>我的个人主页</Brief>
-        </Item>
-        </List>
-    </div>    
+            <div>
+            <List  >
+              <Item  extra={<img alt='' src={require(`../../assets/images/${user.header}.png`)} style={{width:70,height:70}} />} multipleLine onClick={() => {}}>
+                {user.username}
+                <Brief  style={{fontSize:10}}>我的个人主页</Brief>
+              </Item>
+              </List>
+          </div>           
 <div className="flex-container">
-    <Flex>
-      <Flex.Item><div className='personal'>0</div><div className='personal describe'>沟通过</div></Flex.Item>
-      <Flex.Item><div className='personal'>0</div><div className='personal describe'>面试</div></Flex.Item>
-      <Flex.Item><div className='personal'>0</div><div className='personal describe'>已投递</div></Flex.Item>
-      <Flex.Item><div className='personal'>0</div><div className='personal describe'>感兴趣</div></Flex.Item>
+    <Flex style={{backgroundColor:'#fff'}}>
+         {navlist.map((item,index)=>(
+            <Flex.Item key={index}><div className='personal'>{item.number}</div><div className='personal describe'>{item.text}</div></Flex.Item>
+         ))}
     </Flex>
     <WhiteSpace size="md" />
   </div>
      <List >
-        <Item arrow="horizontal" extra={<img src={require(`./jian.png`)} style={{width:21}} />} multipleLine onClick={() => {}}>
+        <Item arrow="horizontal" extra={<img alt='' src={require(`./images/yinsi.png`)} style={{width:21}} />} multipleLine onClick={() => {}}>
           求职助手 <Brief style={{fontSize:10}}>多种道具助你提升求职成功率</Brief>
         </Item>
         </List>
         <WhiteSpace size="md" />    
         <List >
             {
-              type==='boss'? 
+              user.type==='employee'? 
               Lists.map((nav,index) =>(
                     <Item
                     key={index}
-                    thumb={<img src={nav.icon}></img>}
+                    thumb={<img alt='' src={require(`./images/${nav.icon}.png`)}/>}
                     arrow="horizontal"
                     onClick={() => {
-                      console.log(this)
-                      this.props.history.push()
+                      this.props.history.push(`${nav.path}/${user._id}`)
                     }
                   } >{nav.title}</Item>
                 )):bossLists.map((nav,index) =>(
                   <Item
                   key={index}
-                  thumb={<img src={nav.icon}></img>}
+                  thumb={<img alt='' src={require(`./images/${nav.icon}.png`)}></img>}
                   arrow="horizontal"
-                  onClick={(nav,index) => {
-                    
+                  onClick={nav => {   
+                    this.props.history.push(`${nav.path}/${user._id}`)            
                   }
                 }>{nav.title}</Item>
               ))
       }
         </List>
-   <Button type='warning' onClick={this.logout}>退出</Button>
+   <Button style={{backgroundColor:'#1cc3d0'}} type="primary" onClick={this.logout}>退出</Button>
+   </div>
+   )
+   }
+   }
 
-   {/* <Switch>
-        {
-          Lists.map((nav,index) => <Route key={index} path={nav.path} component={nav.component} />)
-        }
-      </Switch> */}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      </div>
-
-    )
-  }
-}
 export default connect(
     state => ({user:state.user}),
     {resetUser}

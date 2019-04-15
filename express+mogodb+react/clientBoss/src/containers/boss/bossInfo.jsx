@@ -10,12 +10,13 @@ import {
   Button,
   List,
   Picker,
-  Modal
+  Modal,
+
 } from 'antd-mobile'
 import {updateUser} from '../../redux/actions'
 import HeaderIcon from '../../components/headerSelector/headerSelector'
-import { createForm } from 'rc-form'
-import { district, provinceLite } from 'antd-mobile-demo-data'
+
+// import { district, provinceLite } from 'antd-mobile-demo-data'
 import CitySelector from '../../components/city/city'
 const salarys = [
   {
@@ -155,6 +156,44 @@ const degree=[
     value: '初中',
   },
 ]
+const scope=[
+  {
+    label:
+    (<div>
+      <span>1-30</span>
+    </div>),
+    value: '1-30人',
+  },
+  {
+    label:
+    (<div>    
+      <span>31-60</span>
+    </div>),
+    value: '31-60人',
+  },
+  {
+    label:
+    (<div>      
+      <span>61-180</span>
+    </div>),
+    value: '61-180人',
+  },
+  {
+    label:
+    (<div>      
+      <span>181-300</span>
+    </div>),
+    value: '181-300人·',
+  },
+  {
+    label:
+    (<div>
+      
+      <span>300以上</span>
+    </div>),
+    value: '300人以上',
+  },
+];
 const Item=List.Item
 const Brief = Item.Brief;
 const alert = Modal.alert;
@@ -167,7 +206,12 @@ class BossInfo extends Component {
     company:'',
     salarysValue:'',
     degrees:'',
-    experiences:''
+    experiences:'',
+    skills:[],
+    scopes:'',
+    place:'',
+    job:'',
+    companyinfo:'',
   }
   handleChange= (name,value) => {
     this.setState({
@@ -187,6 +231,13 @@ class BossInfo extends Component {
      header
     })
   }
+  onChange=()=>{
+
+  }
+  clickCity= (city) => {
+    console.log('jjj',city)
+      this.setState({   city  })
+  }
   render() {
     const { header,type } = this.props.user
     const {post,info,company,salarysValue, experiences, degrees}=this.state
@@ -201,37 +252,51 @@ class BossInfo extends Component {
        <HeaderIcon clickHeader={this.clickHeader} />
        <InputItem placeholder='请输入职位' onChange={val => this.handleChange('post',val)}>招聘职位:</InputItem>
        <InputItem placeholder='请输入公司名称'onChange={val => this.handleChange('company',val)}>公司名称:</InputItem>
+       <InputItem placeholder='请输入上班地点' onChange={val => this.handleChange('place',val)}>上班地点:</InputItem>
+       <InputItem placeholder='请输入你的职位' onChange={val => this.handleChange('job',val)}>我的职位:</InputItem>
        <TextareaItem title='职位要求:' rows={3} onChange={val => this.handleChange('info',val)}/>
        <List >       
-        <Item align="top"  multipleLine>
-          公司位置<Brief><CitySelector/></Brief>
-        </Item>
-        <Picker
-          data={degree}
-          value={this.state.degrees}
+            <TextareaItem title='技能要求:' placeholder='如React，Vue' rows={2} onChange={val => this.handleChange('skills',val)}/>
+            <TextareaItem title='公司介绍:' rows={3} onChange={val => this.handleChange('companyinfo',val)}/>
+            <Item>
+              <Brief>
+              <CitySelector clickCity={this.clickCity}/></Brief>
+            </Item>
+            {/* <Item onClick={() => this.props.history.push('/skill/skill')} arrow="horizontal" extra='请选择'> 技能要求 </Item> */}
+            <Picker
+              data={degree}
+              value={this.state.degrees}
+              cols={1}
+              onChange={val => this.handleChange('degrees',val)}
+                >
+              <List.Item arrow="horizontal">学历要求</List.Item>
+            </Picker>
+            <Picker
+              data={salarys}
+              value={this.state.salarysValue}
+              cols={1}
+              onChange={val => this.handleChange('salarysValue',val)}
+            >
+              <List.Item arrow="horizontal">薪资</List.Item>
+            </Picker>
+            <Picker
+              data={experience}
+              value={this.state.experiences}
+              cols={1}
+              onChange={val => this.handleChange('experiences',val)}
+            >
+              <List.Item arrow="horizontal">工作经验要求</List.Item>
+            </Picker>
+            <Picker
+          data={scope}
+          value={this.state.scopes}
           cols={1}
-          onChange={val => this.handleChange('degrees',val)}
-             >
-          <List.Item arrow="horizontal">学历要求</List.Item>
-        </Picker>
-      <Picker
-          data={salarys}
-          value={this.state.salarysValue}
-          cols={1}
-          onChange={val => this.handleChange('salarysValue',val)}
+          onChange={val => this.handleChange('scopes',val)}
         >
-          <List.Item arrow="horizontal">薪资</List.Item>
+          <List.Item arrow="horizontal">公司规模</List.Item>
+          
         </Picker>
-
-        <Picker
-          data={experience}
-          value={this.state.experiences}
-          cols={1}
-          onChange={val => this.handleChange('experiences',val)}
-        >
-          <List.Item arrow="horizontal">工作经验要求</List.Item>
-        </Picker>
-      </List>
+        </List>
        <Button type='primary' onClick={this.save}>保&nbsp;&nbsp;&nbsp;存</Button>
       </div>
     )

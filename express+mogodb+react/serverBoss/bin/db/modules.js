@@ -22,8 +22,12 @@ const userSchema=mongoose.Schema({
     salarysValue:{type:String},
     experiences:{type:String},
     degrees:{type:String},
-    city:{type:String}
-
+    city:{type:Array},
+    skills:{type:String},
+    scopes:{type:String},
+    place:{type:String},
+    job:{type:String},
+    companyinfo:{type:String},
 })
 const UserModel=mongoose.model('user',userSchema)
 exports.UserModel=UserModel //分别暴露

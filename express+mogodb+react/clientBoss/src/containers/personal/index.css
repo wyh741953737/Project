@@ -1,14 +1,33 @@
 .flex-container{
+ display: flex;
  width: 10rem;
+box-sizing: border-box;
 
 }
-.personal{
- width: 2.5rem;
- background-color: #fff;
- height:.7rem;
- text-align: center;
- line-height: .7rem;
+.data-num-wrap{
+    width: 2.5rem;
+    height: 1.4rem;
+ 
 }
-.describe{
-    line-height: .4rem;
+.data-num-container{
+    height: 1.1rem;
+    background-color: pink;
+    margin-top: 100%;
+    margin-left: 100%;
+    margin-left: -1.25rem;
+    margin-top: -.55rem;
+    text-align: center;
+    border-right: 1px dashed rgb(180, 178, 178) ;
+}
+.data-num{
+    height: .65rem;
+    line-height: .7rem;
+    font-size: 14px;
+}
+.city-name{
+    display: flex;
+    height: .9rem;
+    line-height: .9rem;
+    background-color: rgb(255, 255, 255);
+    align-items: center;
 }

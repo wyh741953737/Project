@@ -16,9 +16,10 @@ import {
      RESET_USER,
      RECEIVE_USER_LIST,
      RECEIVE_MSG_LIST,
-     RECEIVE_MSG
+     RECEIVE_MSG,
+     MSG_READ
     } from './action-types'
-import { func } from 'prop-types';
+
 /*单例对象，
 *1：创建对象前 判断对象是否存在，不存在才创建
  * 2创建对象后，保存对象
@@ -29,7 +30,7 @@ function initIO(dispatch,userid){
         io.socket.on('receiveMsg',function(chatMsg){
             //只有chatMsg和当前用户相关才dispatch分发同步action保存消息
             if(userid===chatMsg.from || userid===chatMsg.to)
-            dispatch(receiveMsg(chatMsg))
+            dispatch(receiveMsg(chatMsg,userid))
         console.log('客户端接受服务器发的消息',chatMsg)
     })
 }
@@ -43,9 +44,9 @@ export const sendMsg=({ from,to,content}) => {
     }
 }
 //接收信息列表
-export const receiveMsgList=({users,chatMsgs}) =>({type:RECEIVE_MSG_LIST,data:{users,chatMsgs}})
+export const receiveMsgList=({users,chatMsgs,userid}) =>({type:RECEIVE_MSG_LIST,data:{users,chatMsgs,userid}})
 //接受一个消息的同步action
-const receiveMsg =(chatMsg) => ({type:RECEIVE_MSG,data:chatMsg})
+const receiveMsg =(chatMsg,userid) => ({type:RECEIVE_MSG,data:{chatMsg,userid}})
 
 //异步获取消息列表数据
 async function  getMsgList(dispatch,userid){
@@ -55,7 +56,7 @@ const result=response.data//这个result只有对方发给我的信息，没有�
 console.log('异步获取消息列表数据',result)
 if(result.code===0){
     const {users,chatMsgs}=result.data
-    dispatch(receiveMsgList({users,chatMsgs}))
+    dispatch(receiveMsgList({users,chatMsgs,userid}))
 }
 }
 
@@ -144,3 +145,15 @@ export const getUserList=(type)=>{
     }
 }
 }
+export const readMsg=(from,to) =>{
+    return async dispatch =>{
+        const response=await reqReadMsg(from)
+        const result=response.data
+        if(result.code===0){
+            const count=result.data
+            console.log('count',count)
+            dispatch(msgRead({count,from,to}))
+        }
+    }
+}
+const msgRead =({count,from,to}) => ({ type:MSG_READ,data:{count,from,to}})

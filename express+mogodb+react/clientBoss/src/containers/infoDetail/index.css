@@ -1,0 +1,70 @@
+.info-page{
+    margin-bottom: 1.1rem;
+}
+.info-container{
+    margin-top: 1rem;
+}
+.info-detail-header{
+    display: flex;
+}
+.detail-header-img{
+    width: 3rem;
+    height: 1.2rem;
+    line-height: 1.2rem;
+    font-size: 14px;
+}
+.font-color{
+    color: rgba(44, 182, 182, 0.89);
+    font-weight: bold;
+}
+.post-describe{
+    height: 1rem;
+    line-height: 1rem;
+    font-weight: bold;
+}
+.post-describe-content{
+    font-size: 15px;
+    color: rgb(111, 113, 114);
+}
+.post-describe-skill{
+    display: flex;
+}
+.post-describe-skill-wrap{
+    height: .56rem;
+    line-height: .56rem;
+    border-radius: .1rem;
+    padding:0 .15rem;
+    margin:.5rem .22rem;
+    font-size: 12px;
+    border: 1px solid rgb(134, 133, 133);
+}
+.detail-chat-button-wrap{
+    height: 1.6rem;
+    width: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    position: fixed;
+    width: 10rem;
+    height:inherit;     
+    z-index:100;
+     bottom: 0;
+}
+.detail-chat-button{
+    width: 9.6rem;
+    height: 1.2rem;
+    background-color: #2cc3d1;
+}
+.danger-wrap{
+    height: .7rem;
+    line-height: .7rem;
+}
+.danger-text{
+     color:#fd4747;
+     font-Size:14px;
+}
+.danger-texts{
+    font-Size:14px;
+    word-wrap: break-word;
+}

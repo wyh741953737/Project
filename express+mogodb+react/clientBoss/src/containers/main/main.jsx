@@ -10,7 +10,6 @@ import NotFount from '../../components/not-fount/not-fount'
 import {
   NavBar,
    Icon,
-  SegmentedControl
   } from 'antd-mobile'
 import { connect } from 'react-redux'
 import { getRedirect } from '../../utils'
@@ -18,7 +17,12 @@ import Cookies from 'js-cookie'
 import Footer from '../../components/footer/footer'
 import { getUser } from '../../redux/actions'
 import ChatDetail from '../chatDetail/chatDetail'
-import img from './msg.png'
+import InfoDetail from '../infoDetail/infoDetail'
+
+import EmployeeDetail from '../employeeDetail/employeeDetail' 
+import MapInfo from '../../components/mapinfo/mapinfo'
+import Wei from '../../containers/personal-route/wei/wei'
+
 import '../../assets/css/index.css'
  class Main extends Component {
    //给组件对象添加属性，包含所有导航组件相关信息
@@ -76,7 +80,8 @@ componentDidMount(){
     if(!userid){//如果cookie没有userid 重定向登陆界面
       return <Redirect to='/login'/>
     }
-    const { user} =this.props
+    const { user,unReadCount} =this.props
+    console.log('我是未读信息',unReadCount)//打印当前未读数量
     //debugger
     if(!user._id){//如果cookie中有userid，读取redux中user，如果user中没有_id,暂时返回null
       return null
@@ -107,11 +112,7 @@ componentDidMount(){
       rightContent={[
         <Icon key="1" type="ellipsis" />,
       ]}
-    >{currentNav.title?currentNav.title:<SegmentedControl
-      values={['聊天', '互动']}
-      tintColor={'#bee9e6'}
-      style={{ height: '.8rem', width: '3.5rem'}}
-    />}</NavBar>:null}
+    >{currentNav.title?currentNav.title:null}</NavBar>:null}
       <Switch>
         {
           navList.map((nav,index) => <Route key={index} path={nav.path} component={nav.component} />)
@@ -119,14 +120,18 @@ componentDidMount(){
         <Route path='/employeeInfo' component={EmployeeInfo}/>
         <Route path='/bossInfo' component={BossInfo}/>
         <Route path='/chatDetail/:userid' component={ChatDetail}/>
+        <Route path='/infoDetail/:userid' component={InfoDetail}/>
+        <Route path='/employeeDetail/:userid' component={EmployeeDetail}/>
+        <Route path='/mapinfo' component={MapInfo}/>
+        <Route path='/wei' component={Wei}/>
         <Route component={NotFount}/>
       </Switch>
-      {currentNav ? <Footer navList={navList}/>:null}
+      {currentNav ? <Footer navList={navList} unReadCount={unReadCount}/>:null}
       </div>
     )
   }
 }
 export default connect(
-  state => ({ user:state.user}),
+  state => ({ user:state.user,unReadCount:state.chat.unReadCount}),
   {getUser}
 )(Main)
