@@ -4,10 +4,12 @@ export default function ajax(url,type='GET',data={}){
     if(type==='GET'){
         //拼请求参数的串
         let paramstr=''
+        //比如data内容，{username：Eileen，password：1}，最后拼成 username=Eileen&password=1
         Object.keys(data).forEach(key =>{//keys属性名data[key]得到属性值
-            paramstr+=key + '=' + data[key] + '&'
+          
+            paramstr+=key + '=' + data[key] + '&'  //得到username=username&password=1&.后面多了一个&
         })
-        if(paramstr){
+        if(paramstr){//如果有值
             paramstr=paramstr.substring(0,paramstr.length-1)//去掉最后一个&
         }
 

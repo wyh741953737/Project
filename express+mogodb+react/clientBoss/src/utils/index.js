@@ -10,3 +10,4 @@ export function getRedirect(type,header){
     }
     return path
 }
+//通过type，header判断来跳转。

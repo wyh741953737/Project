@@ -8,9 +8,6 @@ const filter={password:0,_v:0}//查询时指定过滤出属性，不把密码发
 
 const { UserModel,ChatModel }=require('../bin/db/modules')
 
-// router.get('/', function(req, res, next) {
-//   res.render('index', { title: 'Express' });
-// });
 /*注册路由
 *router的post方法，接受两个参数，第一个url，第二个回调函数。
 *使用userModel的findone方法，查询参数username来判断数据库中是否有同名用户。如果有，通过res.send发送已存在的信息。
@@ -89,11 +86,6 @@ router.get('/userlist',function(req,res){
 router.get('/msglist',function(req,res){
   const userid=req.cookies.userid//获取当前用户userid
   UserModel.find(function(err,allusers){ //查询得到所有user数组。过去
-    //用对象容器存储所有user信息，key为user的_id，val为name和header组成的user对象
-  // const users=userDocs.reduce((users,user) => {
-  //     user[user._id]={username:user.username,header:user.header}
-  //   return users
-  //   },{})
   const users={}
   allusers.forEach(user => {
     users[user._id]={username:user.username,header:user.header}

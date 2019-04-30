@@ -37,6 +37,7 @@ class InfoDetail extends Component {
         map.openInfoWindow(infoWindow,point);    
    }
    })
+  //  map.addEventListener("click", function () { this.props.history.push(`/mapinfo/${targetId}`) });
  }
   render() {
     const {userList}=this.props
@@ -44,9 +45,10 @@ class InfoDetail extends Component {
     const useritem=userList.map(item =>{
       if(item._id===targetId){
         const infoi=item.info
-        const Rep=/^\[1-9]*/g
-        const result=infoi.split(Rep)
-        console.log('result',result)
+        console.log(infoi);
+        // const Rep=/[1-9]/
+        // const result=infoi.split(Rep)
+        // console.log('result',result)
         return <div key={item._id}>
             <NavBar
             mode="light"
@@ -81,7 +83,11 @@ class InfoDetail extends Component {
         </Item>
         <Item>
             <div className='post-describe'>职位详情</div>
-            <div className='post-describe-content'>{result}</div>
+            <div className='post-describe-content'>
+            <pre>
+              {infoi}
+            </pre>
+            </div>
         </Item>
         <Item ><span className='post-describe'>技能要求</span>
             <Brief>
@@ -109,7 +115,7 @@ class InfoDetail extends Component {
         </Item>
       </List>
       <WhiteSpace/>
-      <div style={{zIndex:'1000',border:'1px solid red'}} onClick={() => console.log('map')}>
+      <div onClick={() => console.log('map')}>
       <div id='allmap' style={{width:'10rem',height:'6rem'}} onClick={() => this.props.history.push(`/chatDetail/${targetId}`)}></div>
       </div>
       <List>  

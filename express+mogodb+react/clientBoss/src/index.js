@@ -8,7 +8,9 @@ import Login from './containers/login/login'
 import Main from './containers/main/main'
 import { Provider } from 'react-redux'
 import store from './redux/store'
-import './test/socketio_test'
+
+// import './test/socketio_test'
+
 ReactDOM.render(
 <Provider store={store}>
     <HashRouter>
@@ -18,6 +20,4 @@ ReactDOM.render(
             <Route  component={Main}></Route>
         </Switch>
     </HashRouter>
-</Provider>
-
-    , document.getElementById('root'));
+</Provider> , document.getElementById('root'));

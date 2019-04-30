@@ -26,7 +26,6 @@ function user(state=initUser,action){
         const { type,header }=action.data
             return {
             ...action.data,//把原本的覆盖
-
             redirectTo:getRedirect(type,header)
             } 
         case ERROR_MSG:

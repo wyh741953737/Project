@@ -59,7 +59,6 @@ if(result.code===0){
     dispatch(receiveMsgList({users,chatMsgs,userid}))
 }
 }
-
 const authSuccess= (user) => ({ type:AUTH_SUCCESS,data:user})
 const errorMsg = (msg) => ({type:ERROR_MSG,data:msg})
 
@@ -77,8 +76,7 @@ export const register=( user ) =>{
     return async dispatch => {
         //发送注册的异步请求
        //user是注册接口传过来的参数。
-        //函数执行返回到结果是promise对象,用then取数据，传回调函数太麻烦，
-    
+        //函数执行返回到结果是promise对象,用then取数据，传回调函数太麻烦， 
     const response= await reqRegister({username,password,type})
     const result=response.data  //这里的data包含了codedata，msg，就是后台传过来的数据
         if(result.code===0){//如果成功了，分发成功action

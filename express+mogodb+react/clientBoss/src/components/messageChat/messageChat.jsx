@@ -43,7 +43,7 @@ function getLastMsgs(chatMsgs,userid) {
       return lastMsgs //返回排好序的 所有的对话组的最后一条消息 
      
 }
-function formatDate(createTime,type, auto = true) {
+function formatDate(createTime, auto = true) {
   let date = (createTime + '').length === 10 ? new Date(parseInt(createTime) * 1000) : new Date(parseInt(createTime));
              var y = date.getFullYear();
               var m = date.getMonth() + 1;
@@ -58,27 +58,26 @@ function formatDate(createTime,type, auto = true) {
               second = second < 10 ? ('0' + second) : second;
               let formatTime = '';
   let distinctTime = new Date().getTime() - date.getTime();
-
   if (auto) {
      if (distinctTime <= (24 * 3600 * 1000)) {
           formatTime =h+':'+m
       } else if (distinctTime <= (1 * 24 * 3600 * 1000)) {
         formatTime='昨天'
-      } else if(distinctTime <= (2 * 24 * 3600 * 1000)){
+      } else if(distinctTime <= (7 * 24 * 3600 * 1000)){
         var week;
-        if(createTime.getDay() == 0) week = "星期日"
-        if(createTime.getDay() == 1) week = "星期一"
-        if(createTime.getDay() == 2) week = "星期二"
-        if(createTime.getDay() == 3) week = "星期三"
-        if(createTime.getDay() == 4) week = "星期四"
-        if(createTime.getDay() == 5) week = "星期五"
-        if(createTime.getDay() == 6) week = "星期六"
+        if(date.getDay() == 0) week = "星期日"
+        if(date.getDay() == 1) week = "星期一"
+        if(date.getDay() == 2) week = "星期二"
+        if(date.getDay() == 3) week = "星期三"
+        if(date.getDay() == 4) week = "星期四"
+        if(date.getDay() == 5) week = "星期五"
+        if(date.getDay() == 6) week = "星期六"
         return week;
       }else{
         formatTime= y + '-' + m + '-' + d ;
 
       }
-  } 
+  }
   return formatTime;
 }
 class MessageChat extends Component {

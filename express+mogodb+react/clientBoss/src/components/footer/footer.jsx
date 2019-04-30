@@ -18,28 +18,33 @@ class Footer extends Component {
     return (    
         <TabBar >
             {
-                navList.map((nav) => (
-                  <Item key={nav.path}
-                   title={nav.text}
-                   badge={nav.path==='/message'? unReadCount :0}
-                 //  icon={{url:require(`./images/${nav.icon}.png`)}}
-                  // selectedIcon={{url:require(`./images/${nav.icon}-selected.png`)}}
-                   selected={path===nav.path}
-                   onPress={() => this.props.history.replace(nav.path)}
-                   icon={<div style={{
-                    width: '22px',
-                    height: '22px',
-                    // background: `url(require('./images/${nav.icon}.png') /  21px 21px no-repeat` }}
-                    background: `url(require('./images/employee.png')` }}
-                  />}
-                  selectedIcon={<div style={{
-                    width: '22px',
-                    height: '22px',
-                    background: `url(require('./images/${nav.icon}-selected.png') /  21px 21px no-repeat` }}
-                  />
-                  }
-                />    
-            ))
+                navList.map((nav) => {
+                  let navIcon = require(`./images/${nav.icon}-selected.png`);
+                  let employeePng = require(`./images/${nav.icon}.png`);
+                  console.log(navIcon);
+                  return (
+                    <Item key={nav.path}
+                     title={nav.text}
+                     badge={nav.path==='/message'? unReadCount :0}
+                   //  icon={{url:require(`./images/${nav.icon}.png`)}}
+                    // selectedIcon={{url:require(`./images/${nav.icon}-selected.png`)}}
+                     selected={path===nav.path}
+                     onPress={() => this.props.history.replace(nav.path)}
+                     icon={<div style={{
+                      width: '22px',
+                      height: '22px',
+                      // background: `url(require('./images/${nav.icon}.png') /  21px 21px no-repeat` }}
+                      background: `url(${employeePng}) center / cover`}}
+                    />}
+                    selectedIcon={<div style={{
+                      width: '22px',
+                      height: '22px',
+                      background: `url(${navIcon}) center / cover`}}
+                    />
+                    }
+                  />    
+              )
+                })
              }
         </TabBar>
     )
